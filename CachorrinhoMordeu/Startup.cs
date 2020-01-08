@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using CachorrinhoMordeu.Models;
 
 namespace CachorrinhoMordeu
 {
@@ -33,6 +35,10 @@ namespace CachorrinhoMordeu
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDbContext<CachorrinhoMordeuContext>(options =>
+                    options.UseMySql(Configuration.GetConnectionString("CachorrinhoMordeuContext"), builder =>
+                        builder.MigrationsAssembly("CachorrinhoMordeu")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

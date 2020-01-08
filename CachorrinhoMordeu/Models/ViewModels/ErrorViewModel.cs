@@ -1,6 +1,6 @@
 using System;
 
-namespace CachorrinhoMordeu.Models
+namespace CachorrinhoMordeu.Models.ViewModels
 {
     public class ErrorViewModel
     {
